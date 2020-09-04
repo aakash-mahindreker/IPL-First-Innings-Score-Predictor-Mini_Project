@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL-First-Innings-Score-Prediction</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    
+</head>
+<style>
+    *{margin: 0; padding: 0;
+      box-sizing: border-box;}
+      
+      #Loading{
+          position:fixed;
+          width:100%;
+          height: 100vh;
+          background: black url('https://media.giphy.com/media/3AMRa6DRUhMli/giphy.gif')
+          no-repeat center;
+          z-index:99999;
+      }
+      main
+      {
+          color:black;
+          display :grid;
+          grid-template-rows: 75px 0px 620px 60px;
+          grid-template-columns: 450px 1fr 450px;
+      }
+      .div1
+      {
+          background-color:whitesmoke;
+          color:black;
+          grid-column:1/-1;
+      }
+      .heading_first
+      {
+	        font-family: 'Open Sans', sans-serif;
+	        font-weight: 100;
+      }
+      .description p
+      {
+            font-style: italic;
+            font-size: 12px;
+	        font-weight: 100;
+            margin: 0;
+      }
+      .div2{
+          background-color:black;
+          grid-column:1/-1;
+      }
+
+      .div3{
+          background-color:black;
+      }
+.ipl-banner-left{
+	display: block;
+	position: relative;
+	left: 40px;
+	top: 50px;
+	width: 284px;
+	height: 429px;
+	border-radius: 15px;
+	-webkit-box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+	-moz-box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+	box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+}
+.ipl-banner-right{
+	display: block;
+	position: relative;
+	left: 40px;
+    top: 50px;
+    width: 284px;
+	height: 429px;
+	border-radius: 15px;
+	-webkit-box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+	-moz-box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+	box-shadow: 7px 6px 18px -2px rgba(94,94,94,0.61);
+}
+
+      .div4{
+          background-color:black;
+          color:whitesmoke;
+      }
+      .div5{
+          background-color: black;
+      }
+      .div6{
+          grid-column: 1/-1;
+          background-color:whitesmoke;
+	      color: black;
+          text-align: center;
+      }
+      .footer-description{
+	margin: 0;
+	font-size: 12px;
+	font-weight: 100;
+}
+    </style>
+<body onload="MyFunction()">
+    <div id="Loading"></div>
+    <main>
+        <div class="div1"><center>
+            <h2><span class='heading_first'>First Innings Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
+            <div class='description'>
+    			<p>Built with Flask, Deployed using Heroku.</p></center>
+            </div>
+        </div>
+        <div class="div2">Navigation</div>
+        <div class="div3">Left SideBar
+            <center>
+                <div class='ipl-banner-left'>
+                    <div class="slider-frame">
+                        <div class="slide-images-up">
+                            <!-- Image-1 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
+                            </div>
+                            <!-- Image-2 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='srh.jpg') }}" alt="Sunrisers Hyderabad">
+                            </div>
+                            <!-- Image-3 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='rcb.jpg') }}" alt="Royal Challengers Bangalore">
+                            </div>
+                            <!-- Image-4 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='dc.jpg') }}" alt="Delhi Capitals">
+                            </div>
+                            <!-- Image-5 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='rr.jpg') }}" alt="Rajasthan Royals">
+                            </div>
+                            <!-- Image-6 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
+                            </div>
+                            <!-- Image-7 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='kxip.jpg') }}" alt="Kings XI Punjab">
+                            </div>
+                            <!-- Image-8 -->
+                            <div class="image-container">
+                                <img class="image-width" src="{{ url_for('static', filename='csk.jpg') }}" alt="Chennai Super Kings">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <div class="div4"><center>
+                <br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br>
+                        Final predicted score is:
+                        {{ result }}<br>
+                        Temperature in {{ location }}
+                        {{ temp }}°C
+        </center>
+        </div>
+        <div class="div5">Right SideBar
+            <div class='ipl-banner-right'>
+                <div class="slider-frame">
+                    <div class="slide-images-down">
+
+                        <!-- Image-1 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
+                        </div>
+                        <!-- Image-2 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='srh.jpg') }}" alt="Sunrisers Hyderabad">
+                        </div>
+                        <!-- Image-3 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rcb.jpg') }}" alt="Royal Challengers Bangalore">
+                        </div>
+                        <!-- Image-4 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='dc.jpg') }}" alt="Delhi Capitals">
+                        </div>
+                        <!-- Image-5 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
+                        </div>
+                        <!-- Image-6 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='rr.jpg') }}" alt="Rajasthan Royals">
+                        </div>
+                        <!-- Image-7 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='kxip.jpg') }}" alt="Kings XI Punjab">
+                        </div>
+                        <!-- Image-8 -->
+                        <div class="image-container">
+                            <img class="image-width" src="{{ url_for('static', filename='csk.jpg') }}" alt="Chennai Super Kings">
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        <div class="div6">
+            <div class="contact">
+                <a target="_blank" href="https://github.com/Aakash-Mahindreker/IPL-First-Innings-Score-Prediction-Deployment"><i class="fab fa-github fa-lg contact-icon"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/aakash-mahindreker"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+            </div>
+                <p class='footer-description'>4th Year Mini Project.</p>
+        </div>
+    </main>
+    <script>
+        var pl=document.getElementById('Loading');
+
+        function MyFunction()
+        {
+            pl.style.display="none";
+        }
+    </script>
+</body>
+</html>

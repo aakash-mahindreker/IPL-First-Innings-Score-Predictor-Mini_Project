@@ -26,7 +26,7 @@
       {
           color:black;
           display :grid;
-          grid-template-rows: 75px 0px 620px 60px;
+          grid-template-rows: 65px 50px 580px 60px;
           grid-template-columns: 450px 1fr 450px;
       }
       .div1
@@ -93,7 +93,7 @@
 	      color: black;
           text-align: center;
       }
-      .footer-description{
+    .footer-description{
 	margin: 0;
 	font-size: 12px;
 	font-weight: 100;
@@ -153,44 +153,9 @@
         </div>
         <div class="div4"><center>
             <form name="Dataform" action="{{ url_for('predict') }}" method="POST">
-                <!-- Location Dropdown -->
-                <br><label style="color:white">Venue:<br>
-                    <select class="form-input align-center" name="venue">
-                    <option value="none" >--- Select a Stadium Location ---</option>
-                    <option value="M Chinnaswamy Stadium">M Chinnaswamy Stadium</option>
-                    <option value='Punjab Cricket Association Stadium, Mohali'>Punjab Cricket Association Stadium, Mohali</option>
-                    <option value="Feroz Shah Kotla">Feroz Shah Kotla</option>
-                    <option value="Wankhede Stadium">Wankhede Stadium</option>
-                    <option value="Eden Gardens">Eden Gardens</option>
-                    <option value="Sawai Mansingh Stadium">Sawai Mansingh Stadium</option>
-                    <option value='Rajiv Gandhi International Stadium, Uppal'>Rajiv Gandhi International Stadium, Uppal</option>
-                    <option value='MA Chidambaram Stadium, Chepauk'>MA Chidambaram Stadium, Chepauk</option>
-                    <option value="Dr DY Patil Sports Academy">Dr DY Patil Sports Academy</option>
-                    <option value="Newlands">Newlands</option>
-                    <option value="St George's Park">St George's Park</option>
-                    <option value="Kingsmead">Kingsmead</option>
-                    <option value="SuperSport Park">SuperSport Park</option>
-                    <option value="Buffalo Park">Buffalo Park</option>
-                    <option value="New Wanderers Stadium">New Wanderers Stadium</option>
-                    <option value="De Beers Diamond Oval">De Beers Diamond Oval</option>
-                    <option value="OUTsurance Oval">OUTsurance Oval</option>
-                    <option value="Barabati Stadium">Barabati Stadium</option>
-                    <option value='Sardar Patel Stadium, Motera'>Sardar Patel Stadium, Motera</option>
-                    <option value="Brabourne Stadium">Brabourne Stadium</option>
-                    <option value="Himachal Pradesh Cricket Association Stadium">Himachal Pradesh Cricket Association Stadium</option>
-                    <option value="Holkar Cricket Stadium">Holkar Cricket Stadium</option>
-                    <option value="Dr. Y.S. Rajasekhara Reddy ACA-VDCA Cricket Stadium">ACA-VDCA Cricket Stadium</option>
-                    <option value="Subrata Roy Sahara Stadium">Subrata Roy Sahara Stadium</option>
-                    <option value="Shaheed Veer Narayan Singh International Stadium">Shaheed Veer Narayan Singh International Stadium</option>
-                    <option value="Sharjah Cricket Stadium">Sharjah Cricket Stadium</option>
-                    <option value="Dubai International Cricket Stadium">Dubai International Cricket Stadium</option>
-                    <option value="Sheikh Zayed Stadium">Sheikh Zayed Stadium</option>
-                    <option value="JSCA International Stadium Complex">JSCA International Stadium Complex</option>
-                    <option value="Maharashtra Cricket Association Stadium">Maharashtra Cricket Association Stadium</option>
-                </select></label>
                 <!-- Batting Team Dropdown -->
                 <br><label style="color:white">Batting Team:<br>
-                    <select class="form-input align-center" name="batting-team">
+                    <select class="form-input align-center"  name="batting-team">
                     <option value="none">--- Select a Batting team ---</option>
                     <option value="Mumbai Indians">Mumbai Indians</option>
                     <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
@@ -203,8 +168,8 @@
                 </select>
                 </label>
                 <!-- Bowling Team Dropdown -->
-                <br><label style="color:white" for="btt">Bowling Team:<br>
-                    <select class="form-input align-center" id="bwt" name="bowling-team">
+                <br><label style="color:white">Bowling Team:<br>
+                    <select class="form-input align-center" name="bowling-team">
                     <option value="none">--- Select a Bowling team ---</option>
                     <option value="Mumbai Indians">Mumbai Indians</option>
                     <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
